@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uso de CurrencyPipe</title>
+</head>
+
+<body>
+  <h1>CurrencyPipe, pero antes....</h1>
+  <h3>¿Que es una Pipe?</h3>
+  <p>Las Pipes, o tambien llamadas tuberías o filtros son funciones que se llaman en el html <br>
+    y que tienen por objetivo transformar un dato a mostrar para mejorar la experiencia del usuario </p>
+
+  <h2>Pues bien, lo que vengo hoy a explicar son las CurrencyPipes</h2>
+  <p>Se encargan de transformar números a formato de monedas Locales. Un claro ejemplo sería el siguiente:
+    <br>Si ponemos el número al inicio del código, introduciremos el valor , añadimos el Pipe en el medio,
+    <br>y despues usamos <b>currency</b>,añadiendole, por ejemplo 'EUR',
+    <br>nos estaría diciendo que el importe del número que hemos introducido se calculará en euros.
+    <br><b>Ejemplo</b>: {{ 345.76 | currency: 'EUR' }}
+  </p>
+
+  <p><br> Si utilizamos el mismo código de antes, pero en vez de en euros, lo cambiamos por dólares, obtendremos el
+    siguiente resultado:
+    <br><b>Ejemplo</b>:{{ 345.76 | currency: '$' }}
+  </p>
+
+  <p>Tambien podemos definirlo en un <b>typescript</b> y luego invocarlo en nuestro html.
+    <br>Si le indicamos en el ts el valor de nuestro saldo, bastará con cambiar el valor, por el saldo
+    <br><b>Ejemplo</b>: El saldo es : {{saldo | currency: 'EUR'}}
+    <!-- BASADO EN TABLAS ISO 42-17 (TABLA ACRONIMOS EN LOS PAISES) -->
+  </p>
+
+  <p>Si no especificamos el valor de la moneda, nos pondrá el que tengamos predeterminado en nuestra aplicación
+    <br><b>Ejemplo</b>: El saldo es: {{saldo | currency}}
+  </p>
+
+  <p>Otro parametro que admiten las <b>CurrencyPipes</b> es el filtrado por decimales, modificando el código despues
+    del <b>symbol</b>.
+    <br>Si queremos mostrar solamente el número sin decimales, nos quedaría de la siguiente manera:
+    <br><b>Ejemplo</b>: El saldo es : {{saldo | currency: 'EUR': 'symbol': '1.0-0'}}
+    <!-- 1: Es el número máximo de digitos 
+      0: Es el número máximo de decimales a mostrar -->
+
+    <br>Si queremos que solo salga un decimal, cambiando el symbol nos quedaría de esta manera:
+    <br><b>Ejemplo</b>: El saldo es : {{saldo | currency: 'EUR': 'symbol': '1.1-1'}}
+  </p>
+</body>
+
+</html>
